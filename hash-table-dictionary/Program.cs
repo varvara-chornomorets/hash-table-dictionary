@@ -1,3 +1,9 @@
-﻿// See https://aka.ms/new-console-template for more information
+﻿using hash_table_dictionary;
+using KeyValuePair = hash_table_dictionary.KeyValuePair;
 
-Console.WriteLine("Hello, World!");
+LinkedList myList = new LinkedList();
+myList.AddBack(new KeyValuePair("liza", "taras"));
+myList.AddBack(new KeyValuePair("varia", "sasha"));
+myList.AddBack(new KeyValuePair("love", "support"));
+myList.AddBack(new KeyValuePair("caring", "affection"));
+myList.PrintLinkedList();
