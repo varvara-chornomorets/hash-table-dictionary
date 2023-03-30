@@ -16,6 +16,7 @@ public class LinkedList
         _head = null;
         _size = 0;
     }
+
     public void AddBack(KeyValuePair pair)
     {
         // add provided pair to the end of the linked list
@@ -71,14 +72,17 @@ public class LinkedList
                 {
                     prev.Next = cur.Next;
                 }
+
                 _size--;
                 // if we want to delete last element, we should change tail
                 if (cur.Next == null)
                 {
                     _tail = prev;
                 }
+
                 return;
             }
+
             // move cur to the next, and change prev to the next
             cur = cur.Next;
             if (prev == null)
@@ -89,8 +93,8 @@ public class LinkedList
             {
                 prev = prev.Next;
             }
-            
-            
+
+
         }
 
         throw new Exception("there is no such element in the list, so I cannot delete it");
@@ -110,6 +114,23 @@ public class LinkedList
 
             cur = cur.Next;
         }
+
         return null;
+    }
+
+    public List<KeyValuePair>? GetAllPairs(List<KeyValuePair>? list)
+    {
+        if (this._size == 0)
+        {
+            return list;
+        }
+        var cur = _head;
+        for (int i = 0; i < _size; i++)
+        {
+            list.Add(cur.Pair);
+            cur = cur.Next;
+        }
+
+        return list;
     }
 }
