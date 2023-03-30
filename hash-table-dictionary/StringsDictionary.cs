@@ -18,7 +18,7 @@ public class StringsDictionary
     public void Add(string key, string value)
     {
         // int curHash = CalculateHash(key);
-        int curHash = 2;
+        int curHash = 20;
         int index = curHash % InitialSize;
         if (_buckets[index] == null)
         {
@@ -44,12 +44,19 @@ public class StringsDictionary
             
         }
     }
-    /* public void Remove(string key)
+    public void Remove(string key)
     {
-            
+        // int curHash = CalculateHash(key);
+        int curHash = 20;
+        int index = curHash % InitialSize;
+        if (_buckets[index] == null)
+        {
+            throw new Exception("there is no such element (bucket is null)");
+        }
+        _buckets[index].RemoveByKey(key);
     }
 
-    public string Get(string key)
+    /* public string Get(string key)
     {
             
     }

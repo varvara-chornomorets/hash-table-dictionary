@@ -3,9 +3,7 @@ using KeyValuePair = hash_table_dictionary.KeyValuePair;
 
 
 var myDictionary = new StringsDictionary();
-myDictionary.Add("varia", "sasha");
-myDictionary.Add("sasha", "varia");
-myDictionary.Add("liza", "taras");
+myDictionary.Remove("sasha");
 myDictionary.PrintDictionary();
 
 /* LinkedList myList = new LinkedList();
