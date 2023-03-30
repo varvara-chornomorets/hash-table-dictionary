@@ -8,7 +8,17 @@ myList.AddBack(new KeyValuePair("love", "support"));
 myList.AddBack(new KeyValuePair("caring", "affection"));
 
 
-myList.PrintLinkedList();
+var pair = myList.GetItemWithKey("varia");
+Console.WriteLine($"{pair.Key} and {pair.Value}");
+var pair2 = myList.GetItemWithKey("love");
+Console.WriteLine($"{pair2.Key} and {pair2.Value}");
+myList.RemoveByKey("varia");
+var pair3 = myList.GetItemWithKey("varia");
+Console.WriteLine($"{pair3.Key} and {pair3.Value}");
+
+
+
+/* myList.PrintLinkedList();
 Console.WriteLine("/");
 myList.RemoveByKey("caring");
 myList.PrintLinkedList();
@@ -22,3 +32,4 @@ Console.WriteLine("/");
 myList.RemoveByKey("varia");
 myList.PrintLinkedList();
 Console.WriteLine("/");
+*/

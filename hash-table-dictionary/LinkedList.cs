@@ -96,9 +96,20 @@ public class LinkedList
         throw new Exception("there is no such element in the list, so I cannot delete it");
     }
 
-    /* public KeyValuePair GetItemWithKey(string key)
+    public KeyValuePair? GetItemWithKey(string key)
     {
         // get pair with provided key, return null if not found
-        return;
-    }*/
+        var cur = _head;
+        for (int i = 0; i < _size; i++)
+        {
+            var curKey = cur.Pair.Key;
+            if (curKey == key)
+            {
+                return cur.Pair;
+            }
+
+            cur = cur.Next;
+        }
+        return null;
+    }
 }
