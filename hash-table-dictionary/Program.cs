@@ -12,7 +12,20 @@ foreach (var line in lines)
     string defenition = string.Join("", wordDefArray, 1, wordDefArray.Length - 1);
     myDictionary.Add(word, defenition);
 }
-myDictionary.PrintDictionary();
-Console.WriteLine(myDictionary.Get("ABASE"));
+Console.WriteLine("hello! this is dictionary! amazing, isn't it? you can type in some word, and I will give you a defenition");
+while (true)
+{
+    string input = Console.ReadLine();
+    string requestedWord = input.ToUpper();
+    try
+    {
+        string defenition = myDictionary.Get(requestedWord);
+        Console.WriteLine($"{requestedWord}   {defenition}");
+    }
+    catch
+    {
+        Console.WriteLine("seems, like you have entered incorrect word");
+    }
+}
 
 
