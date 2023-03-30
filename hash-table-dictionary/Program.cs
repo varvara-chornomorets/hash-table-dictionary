@@ -6,4 +6,19 @@ myList.AddBack(new KeyValuePair("liza", "taras"));
 myList.AddBack(new KeyValuePair("varia", "sasha"));
 myList.AddBack(new KeyValuePair("love", "support"));
 myList.AddBack(new KeyValuePair("caring", "affection"));
+
+
 myList.PrintLinkedList();
+Console.WriteLine("/");
+myList.RemoveByKey("caring");
+myList.PrintLinkedList();
+Console.WriteLine("/");
+myList.RemoveByKey("e");
+myList.PrintLinkedList();
+Console.WriteLine("/");
+myList.RemoveByKey("liza");
+myList.PrintLinkedList();
+Console.WriteLine("/");
+myList.RemoveByKey("varia");
+myList.PrintLinkedList();
+Console.WriteLine("/");
