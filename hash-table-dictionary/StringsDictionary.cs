@@ -56,13 +56,25 @@ public class StringsDictionary
         _buckets[index].RemoveByKey(key);
     }
 
-    /* public string Get(string key)
+    public string Get(string key)
     {
-            
+        // int curHash = CalculateHash(key);
+        int curHash = 20;
+        int index = curHash % InitialSize;
+        if (_buckets[index] == null)
+        {
+            throw new Exception("there is no such an element (bucket is null");
+        }
+        var pair = _buckets[index].GetItemWithKey(key);
+        if (pair == null)
+        {
+            throw new Exception("there is no such an element(not on the list or list is empty");
+        }
+        return pair.Value;
     }
 
 
-    private int CalculateHash(string key)
+    /* private int CalculateHash(string key)
     {
         // function to convert string value to number 
     } */
