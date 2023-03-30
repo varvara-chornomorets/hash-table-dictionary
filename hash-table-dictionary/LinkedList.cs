@@ -23,16 +23,25 @@ public class LinkedList
         if (this._size == 0)
         {
             LinkedListNode cur = new LinkedListNode(pair);
-            _tail = cur;
             _head = cur;
             _size++;
             return;
         }
 
-        LinkedListNode notLastAnymore = _tail;
-        LinkedListNode last = new LinkedListNode(pair);
-        _tail = last;
-        notLastAnymore.Next = last;
+        LinkedListNode current = _head;
+        string key = pair.Key;
+        while (current.Next != null)
+        {
+            if (key == current.Pair.Key)
+            {
+                current.Pair = pair;
+                return;
+            }
+
+            current = current.Next;
+        }
+
+        current.Next = new LinkedListNode(pair);
         _size++;
     }
 
