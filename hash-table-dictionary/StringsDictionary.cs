@@ -4,31 +4,44 @@ public class StringsDictionary
 {
     private const int InitialSize = 10;
 
-    private LinkedList[] _buckets;
+    private LinkedList[] _buckets = new LinkedList[InitialSize];
 
-    public StringsDictionary()
+    /*public StringsDictionary()
     {
         _buckets = new LinkedList[InitialSize];
         for (int i = 0; i < InitialSize; i++)
         {
             _buckets[i] = new LinkedList();
         }
-    }
+    }*/
 
     public void Add(string key, string value)
     {
         // int curHash = CalculateHash(key);
         int curHash = 2;
         int index = curHash % InitialSize;
-        LinkedList bucket = _buckets[index];
-        bucket.AddBack(new KeyValuePair(key, value));
+        if (_buckets[index] == null)
+        {
+            _buckets[index] = new LinkedList();
+        }
+        _buckets[index].AddBack(new KeyValuePair(key, value));
     }
 
     public void PrintDictionary()
     {
-        foreach (var variabBucket in _buckets)
+        for (int i = 0; i < InitialSize; i++)
         {
-            variabBucket.PrintLinkedList();
+            Console.WriteLine($"bucket number{i}");
+            var variabBucket = _buckets[i];
+            if (variabBucket != null)
+            {
+                variabBucket.PrintLinkedList();
+            }
+            else
+            {
+                Console.WriteLine("null");
+            }
+            
         }
     }
     /* public void Remove(string key)
