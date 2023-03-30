@@ -1,7 +1,14 @@
 ﻿using hash_table_dictionary;
 using KeyValuePair = hash_table_dictionary.KeyValuePair;
 
-LinkedList myList = new LinkedList();
+
+var myDictionary = new StringsDictionary();
+myDictionary.Add("varia", "sasha");
+myDictionary.Add("sasha", "varia");
+myDictionary.Add("liza", "taras");
+myDictionary.PrintDictionary();
+
+/* LinkedList myList = new LinkedList();
 myList.AddBack(new KeyValuePair("liza", "taras"));
 myList.AddBack(new KeyValuePair("varia", "sasha"));
 myList.AddBack(new KeyValuePair("love", "support"));
@@ -18,7 +25,7 @@ Console.WriteLine($"{pair3.Key} and {pair3.Value}");
 
 
 
-/* myList.PrintLinkedList();
+myList.PrintLinkedList();
 Console.WriteLine("/");
 myList.RemoveByKey("caring");
 myList.PrintLinkedList();
