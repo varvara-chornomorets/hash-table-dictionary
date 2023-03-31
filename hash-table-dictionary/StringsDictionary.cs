@@ -2,7 +2,7 @@
 
 public class StringsDictionary
 {
-    private const int _size;
+    private int _size;
 
     private LinkedList[] _buckets;
     
