@@ -2,7 +2,7 @@
 
 public class StringsDictionary
 {
-    private const int _size;
+    private int _size;
 
     private LinkedList[] _buckets;
     
@@ -120,12 +120,11 @@ public class StringsDictionary
     {
         // function to convert string value to number 
         int result = 0;
-        foreach (var c in key)
+        for (int i = 0; i < key.Length; i++)
         {
-            byte number = Convert.ToByte(c);
-            result += number * number;
+            byte number = Convert.ToByte(key[i]); 
+            result += number * number * (i+1);
         }
         return result;
-
     } 
 }
