@@ -1,7 +1,7 @@
 ﻿using hash_table_dictionary;
 using KeyValuePair = hash_table_dictionary.KeyValuePair;
 
-var myDictionary = new StringsDictionary();
+var myDictionary = new StringsDictionary(10);
 int counter = 0;
 string[] lines = File.ReadAllLines("C:/Users/chorn/Desktop/it/hash-table-dictionary/hash-table-dictionary/dictionary.txt");
 foreach (var line in lines)

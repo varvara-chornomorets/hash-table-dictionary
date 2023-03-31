@@ -122,4 +122,20 @@ public class LinkedList
         }
         return null;
     }
+    
+    public List<KeyValuePair>? GetAllPairs(List<KeyValuePair>? list)
+    {
+        if (this._size == 0)
+        {
+            return list;
+        }
+        var cur = _head;
+        for (int i = 0; i < _size; i++)
+        {
+            list.Add(cur.Pair);
+            cur = cur.Next;
+        }
+
+        return list;
+    }
 }

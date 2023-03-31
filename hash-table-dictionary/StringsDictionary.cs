@@ -2,25 +2,70 @@
 
 public class StringsDictionary
 {
-    private const int InitialSize = 10000;
+    private const int _size;
 
-    private LinkedList[] _buckets = new LinkedList[InitialSize];
+    private LinkedList[] _buckets;
+    
+    public StringsDictionary(int size)
+    {
+        this._size = size;
+        _buckets = new LinkedList[_size];
+    }
 
     public void Add(string key, string value)
     {
         int curHash = CalculateHash(key);
         
-        int index = curHash % InitialSize;
+        int index = curHash % _size;
         if (_buckets[index] == null)
         {
             _buckets[index] = new LinkedList();
         }
         _buckets[index].AddBack(new KeyValuePair(key, value));
+        if (LoadFactor() > 0.7)
+        {
+            ResizeDictionary();
+        }
+    }
+    
+    private void ResizeDictionary()
+    {
+        Console.WriteLine($"RESIZING! from size {this._size}, load factor {LoadFactor()} unused {_buckets.Count(item => item == null)}");
+        this._size = this._size * 2;
+        var oldBuckets = _buckets;
+        _buckets = new LinkedList[this._size];
+        var allElements = new List<KeyValuePair>();
+        foreach (var bucket in oldBuckets)
+        {
+            if (bucket == null)
+            {
+                continue;
+            }
+
+            allElements = bucket.GetAllPairs(allElements);
+            if (allElements == null)
+            {
+                continue;
+            }
+
+        }
+
+        foreach (var pair in allElements)
+        {
+            Add(pair.Key, pair.Value);
+        }
+
+    }
+    private float LoadFactor()
+    {
+        float used = _buckets.Count(item => item != null);
+        var result = used / this._size;
+        return result;
     }
 
     public void PrintDictionary()
     {
-        for (int i = 0; i < InitialSize; i++)
+        for (int i = 0; i < _size; i++)
         {
             Console.WriteLine($"THIS IS bucket number{i}");
             Console.WriteLine($"THIS IS bucket number{i}");
@@ -45,7 +90,7 @@ public class StringsDictionary
     {
         int curHash = CalculateHash(key);
         
-        int index = curHash % InitialSize;
+        int index = curHash % _size;
         if (_buckets[index] == null)
         {
             throw new Exception("there is no such element (bucket is null)");
@@ -57,7 +102,7 @@ public class StringsDictionary
     {
         int curHash = CalculateHash(key);
         
-        int index = curHash % InitialSize;
+        int index = curHash % _size;
         if (_buckets[index] == null)
         {
             throw new Exception("there is no such an element (bucket is null");
